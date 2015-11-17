@@ -15,8 +15,8 @@
 		3F0ED0571BD7126E00A7448C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0ED0551BD7126E00A7448C /* LaunchScreen.storyboard */; };
 		3F0ED0621BD7126F00A7448C /* EventFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ED0611BD7126F00A7448C /* EventFinderTests.m */; };
 		3F0ED06D1BD7126F00A7448C /* EventFinderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ED06C1BD7126F00A7448C /* EventFinderUITests.m */; };
-		3F53E36D1BF00B4D000C6AA8 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F53E36C1BF00B4D000C6AA8 /* TableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		3F53E3701BF00B99000C6AA8 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F53E36F1BF00B99000C6AA8 /* DetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3F53E3701BF00B99000C6AA8 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F53E36F1BF00B99000C6AA8 /* DetailViewController.m */; };
+		E5BA7C9C1BFAF076002AC574 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA7C9B1BFAF076002AC574 /* TableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +53,10 @@
 		3F0ED0681BD7126F00A7448C /* EventFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0ED06C1BD7126F00A7448C /* EventFinderUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventFinderUITests.m; sourceTree = "<group>"; };
 		3F0ED06E1BD7126F00A7448C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F53E36B1BF00B4D000C6AA8 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableViewController.h; path = ../TableViewController.h; sourceTree = "<group>"; };
-		3F53E36C1BF00B4D000C6AA8 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableViewController.m; path = ../TableViewController.m; sourceTree = "<group>"; };
 		3F53E36E1BF00B99000C6AA8 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		3F53E36F1BF00B99000C6AA8 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		E5BA7C9A1BFAF05F002AC574 /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		E5BA7C9B1BFAF076002AC574 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +111,8 @@
 				3F0ED04B1BD7126E00A7448C /* AppDelegate.m */,
 				3F53E36E1BF00B99000C6AA8 /* DetailViewController.h */,
 				3F53E36F1BF00B99000C6AA8 /* DetailViewController.m */,
-				3F53E36B1BF00B4D000C6AA8 /* TableViewController.h */,
-				3F53E36C1BF00B4D000C6AA8 /* TableViewController.m */,
+				E5BA7C9A1BFAF05F002AC574 /* TableViewController.h */,
+				E5BA7C9B1BFAF076002AC574 /* TableViewController.m */,
 				3F0ED04D1BD7126E00A7448C /* ViewController.h */,
 				3F0ED04E1BD7126E00A7448C /* ViewController.m */,
 				3F0ED0501BD7126E00A7448C /* Main.storyboard */,
@@ -281,10 +281,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F53E3701BF00B99000C6AA8 /* DetailViewController.m in Sources */,
+				E5BA7C9C1BFAF076002AC574 /* TableViewController.m in Sources */,
 				3F0ED04F1BD7126E00A7448C /* ViewController.m in Sources */,
 				3F0ED04C1BD7126E00A7448C /* AppDelegate.m in Sources */,
 				3F0ED0491BD7126E00A7448C /* main.m in Sources */,
-				3F53E36D1BF00B4D000C6AA8 /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
