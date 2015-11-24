@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TableViewController : UITableViewController
-@property (strong, nonatomic) NSArray *eventTitles;
+@interface TableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+//@property (strong, nonatomic) NSMutableArray *eventTitles;
 @end

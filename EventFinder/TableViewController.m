@@ -10,7 +10,7 @@
 #import "DetailViewController.h"
 
 @interface TableViewController ()
-
+@property (strong, nonatomic) NSMutableArray *eventTitles;
 @end
 
 @implementation TableViewController
@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.eventTitles = [[NSArray alloc] initWithObjects:@"Event 1", @"Event 2", @"Event 3", @"Event 4", nil];
+    self.eventTitles = [[NSMutableArray alloc] initWithObjects:@"Event 1", @"Event 2", @"Event 3", @"Event 4", nil];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -42,17 +42,15 @@
     return [self.eventTitles count];
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *tableIdentifier = @"EventCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableIdentifier];
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tableIdentifier];
     }
     
     cell.textLabel.text = [self.eventTitles objectAtIndex:indexPath.row];
-    
     return cell;
 }
 
