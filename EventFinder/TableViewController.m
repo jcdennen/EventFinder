@@ -20,11 +20,16 @@
     
     self.eventTitles = [[NSMutableArray alloc] initWithObjects:@"Event 1", @"Event 2", @"Event 3", @"Event 4", nil];
     
+#warning TODO: add actions to UIBarButtonItems and fix the settings button
+    UIBarButtonItem *addEventButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:nil];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:nil];
+    
+    self.navigationItem.rightBarButtonItem = addEventButton;
+    self.navigationItem.leftBarButtonItem = settingsButton;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {

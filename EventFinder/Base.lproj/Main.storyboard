@@ -34,9 +34,7 @@
                             <outlet property="delegate" destination="BYZ-38-t0r" id="aBA-Dd-LZQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Event Calendar" id="n1m-eO-pKG">
-                        <barButtonItem key="backBarButtonItem" title="back" id="3Jt-38-mUN"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Event Calendar" id="n1m-eO-pKG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
