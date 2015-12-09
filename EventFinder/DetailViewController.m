@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import <Parse/Parse.h>
 
 @interface DetailViewController ()
 
@@ -27,6 +28,9 @@
     // Do any additional setup after loading the view.
     // Additional setup should not be necessary.. all setup done in prepareForSegue in TableViewController
     self.title = self.titleText;
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    testObject[@"foo"] = @"bar";
+    [testObject saveInBackground];
 }
 
 - (void)didReceiveMemoryWarning {
