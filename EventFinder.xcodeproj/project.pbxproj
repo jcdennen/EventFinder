@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3F0ED0491BD7126E00A7448C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ED0481BD7126E00A7448C /* main.m */; };
 		3F0ED04C1BD7126E00A7448C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ED04B1BD7126E00A7448C /* AppDelegate.m */; };
-		3F0ED04F1BD7126E00A7448C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ED04E1BD7126E00A7448C /* ViewController.m */; };
 		3F0ED0521BD7126E00A7448C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0ED0501BD7126E00A7448C /* Main.storyboard */; };
 		3F0ED0541BD7126E00A7448C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F0ED0531BD7126E00A7448C /* Assets.xcassets */; };
 		3F0ED0571BD7126E00A7448C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0ED0551BD7126E00A7448C /* LaunchScreen.storyboard */; };
@@ -28,6 +27,8 @@
 		E581067B1C17CCCD008612F4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58106711C17CCCC008612F4 /* Security.framework */; };
 		E581067C1C17CCCD008612F4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58106721C17CCCC008612F4 /* StoreKit.framework */; };
 		E581067D1C17CCCD008612F4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58106731C17CCCC008612F4 /* SystemConfiguration.framework */; };
+		E58106801C17F29D008612F4 /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E581067F1C17F29D008612F4 /* AddEventViewController.m */; };
+		E58106831C17F2E1008612F4 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E58106821C17F2E1008612F4 /* SettingsViewController.m */; };
 		E5BA7C9C1BFAF076002AC574 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BA7C9B1BFAF076002AC574 /* TableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -53,8 +54,6 @@
 		3F0ED0481BD7126E00A7448C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3F0ED04A1BD7126E00A7448C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3F0ED04B1BD7126E00A7448C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3F0ED04D1BD7126E00A7448C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3F0ED04E1BD7126E00A7448C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3F0ED0511BD7126E00A7448C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F0ED0531BD7126E00A7448C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F0ED0561BD7126E00A7448C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,6 +78,10 @@
 		E58106711C17CCCC008612F4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E58106721C17CCCC008612F4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E58106731C17CCCC008612F4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E581067E1C17F29D008612F4 /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
+		E581067F1C17F29D008612F4 /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
+		E58106811C17F2E1008612F4 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		E58106821C17F2E1008612F4 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		E5BA7C9A1BFAF05F002AC574 /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		E5BA7C9B1BFAF076002AC574 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,12 +151,14 @@
 			children = (
 				3F0ED04A1BD7126E00A7448C /* AppDelegate.h */,
 				3F0ED04B1BD7126E00A7448C /* AppDelegate.m */,
+				E581067E1C17F29D008612F4 /* AddEventViewController.h */,
+				E581067F1C17F29D008612F4 /* AddEventViewController.m */,
 				3F53E36E1BF00B99000C6AA8 /* DetailViewController.h */,
 				3F53E36F1BF00B99000C6AA8 /* DetailViewController.m */,
+				E58106811C17F2E1008612F4 /* SettingsViewController.h */,
+				E58106821C17F2E1008612F4 /* SettingsViewController.m */,
 				E5BA7C9A1BFAF05F002AC574 /* TableViewController.h */,
 				E5BA7C9B1BFAF076002AC574 /* TableViewController.m */,
-				3F0ED04D1BD7126E00A7448C /* ViewController.h */,
-				3F0ED04E1BD7126E00A7448C /* ViewController.m */,
 				3F0ED0501BD7126E00A7448C /* Main.storyboard */,
 				3F0ED0531BD7126E00A7448C /* Assets.xcassets */,
 				3F0ED0551BD7126E00A7448C /* LaunchScreen.storyboard */,
@@ -338,9 +343,10 @@
 			files = (
 				3F53E3701BF00B99000C6AA8 /* DetailViewController.m in Sources */,
 				E5BA7C9C1BFAF076002AC574 /* TableViewController.m in Sources */,
-				3F0ED04F1BD7126E00A7448C /* ViewController.m in Sources */,
 				3F0ED04C1BD7126E00A7448C /* AppDelegate.m in Sources */,
 				3F0ED0491BD7126E00A7448C /* main.m in Sources */,
+				E58106801C17F29D008612F4 /* AddEventViewController.m in Sources */,
+				E58106831C17F2E1008612F4 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

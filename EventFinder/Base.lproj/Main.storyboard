@@ -5,6 +5,25 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Settings View Controller-->
+        <scene sceneID="d8v-Mn-QpL">
+            <objects>
+                <viewController id="rDN-6j-M93" userLabel="Settings View Controller" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b9s-Ho-Jml"/>
+                        <viewControllerLayoutGuide type="bottom" id="x5K-1B-ain"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Y3-yh-l8a">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Qh-oL-Jsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1235" y="1088"/>
+        </scene>
         <!--Event Calendar View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -34,11 +53,41 @@
                             <outlet property="delegate" destination="BYZ-38-t0r" id="aBA-Dd-LZQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Event Calendar" id="n1m-eO-pKG"/>
+                    <navigationItem key="navigationItem" title="Event Calendar" id="n1m-eO-pKG">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="rWJ-jj-Eez">
+                            <connections>
+                                <segue destination="rDN-6j-M93" kind="show" identifier="transitionToSettings" id="teb-z1-4PC"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iZF-H2-LrK">
+                            <connections>
+                                <segue destination="7I0-ko-xR1" kind="show" identifier="transitionToAddEvent" id="a95-hO-YSG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1235" y="308"/>
+        </scene>
+        <!--Add Event View Controller-->
+        <scene sceneID="uEs-cy-qZe">
+            <objects>
+                <viewController id="7I0-ko-xR1" userLabel="Add Event View Controller" customClass="AddEventViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KlQ-dM-CfS"/>
+                        <viewControllerLayoutGuide type="bottom" id="9tx-Yt-NdZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wZo-Z3-sW6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f72-FJ-1TE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1963" y="-431"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="zRH-qV-pBa">

@@ -20,13 +20,6 @@
     
     self.eventTitles = [[NSMutableArray alloc] initWithObjects:@"Event 1", @"Event 2", @"Event 3", @"Event 4", nil];
     
-#warning TODO: add actions to UIBarButtonItems and fix the settings button
-    UIBarButtonItem *addEventButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:nil];
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:nil];
-    
-    self.navigationItem.rightBarButtonItem = addEventButton;
-    self.navigationItem.leftBarButtonItem = settingsButton;
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -101,14 +94,17 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    NSLog(@"ID: %@", segue.identifier);
     [super prepareForSegue:segue sender:sender];
     
-    DetailViewController *detailView = [segue destinationViewController];
-    NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-    NSString *title = [self.eventTitles objectAtIndex:path.row];
+    if ([segue.identifier isEqual: @"transitionToEvent"]) {
     
-    detailView.titleText = title;
-    //TODO: set more attributes in the future
+        DetailViewController *detailView = [segue destinationViewController];
+        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        NSString *title = [self.eventTitles objectAtIndex:path.row];
+        
+        detailView.titleText = title;
+    }
 }
 
 @end
