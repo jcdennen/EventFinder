@@ -26,6 +26,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+# warning constraints
+    // need to have the event date/time minimum constrained to the current time
+
+
 /*
 #pragma mark - Navigation
 

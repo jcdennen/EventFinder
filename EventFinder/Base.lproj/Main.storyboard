@@ -16,8 +16,63 @@
                     <view key="view" contentMode="scaleToFill" id="3Y3-yh-l8a">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lGD-jm-5CD">
+                                <rect key="frame" x="252" y="129" width="97" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rYl-b6-lOS">
+                                <rect key="frame" x="252" y="201" width="97" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UoD-7i-MXj">
+                                <rect key="frame" x="252" y="271" width="97" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="oOm-m7-VOo" userLabel="Location Slider">
+                                <rect key="frame" x="149" y="383" width="304" height="31"/>
+                                <animations/>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="tU8-mH-csj" userLabel="Dates Slider">
+                                <rect key="frame" x="148" y="486" width="304" height="31"/>
+                                <animations/>
+                            </slider>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jip-dz-wfW">
+                                <rect key="frame" x="252" y="345" width="97" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Dates" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GG6-xD-tjI">
+                                <rect key="frame" x="252" y="448" width="97" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efW-wE-LzO">
+                                <rect key="frame" x="278" y="550" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Save"/>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lGD-jm-5CD" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="7au-EB-bJz"/>
+                            <constraint firstItem="rYl-b6-lOS" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="EsK-Ak-arH"/>
+                            <constraint firstItem="UoD-7i-MXj" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="FTG-Ay-GLK"/>
+                            <constraint firstItem="oOm-m7-VOo" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="Jzk-qZ-qLi"/>
+                            <constraint firstItem="tU8-mH-csj" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="LHq-eO-qmF"/>
+                            <constraint firstItem="efW-wE-LzO" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="R6n-DZ-bXJ"/>
+                            <constraint firstItem="jip-dz-wfW" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="bY9-0Y-ic9"/>
+                            <constraint firstItem="GG6-xD-tjI" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="pvE-SI-nMG"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Qh-oL-Jsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -81,8 +136,55 @@
                     <view key="view" contentMode="scaleToFill" id="wZo-Z3-sW6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uTK-ct-MC4">
+                                <rect key="frame" x="160" y="85" width="280" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kdj-yf-rDe" userLabel="Description">
+                                <rect key="frame" x="180" y="141" width="240" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="b7M-pq-HTG">
+                                <rect key="frame" x="0.0" y="323" width="600" height="124"/>
+                                <animations/>
+                                <date key="date" timeIntervalSinceReferenceDate="471389860.16694999">
+                                    <!--2015-12-09 21:37:40 +0000-->
+                                </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                                    <!--1970-01-01 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
+                                    <!--2037-12-31 11:00:00 +0000-->
+                                </date>
+                            </datePicker>
+                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="3ed-Ku-u1r" userLabel="Time Picker">
+                                <rect key="frame" x="0.0" y="448" width="600" height="113"/>
+                                <animations/>
+                                <date key="date" timeIntervalSinceReferenceDate="471390212.27916402">
+                                    <!--2015-12-09 21:43:32 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFG-Np-b5y">
+                                <rect key="frame" x="276" y="550" width="49" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Submit"/>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3ed-Ku-u1r" firstAttribute="centerX" secondItem="wZo-Z3-sW6" secondAttribute="centerX" id="3L7-FV-8e9"/>
+                            <constraint firstItem="b7M-pq-HTG" firstAttribute="centerX" secondItem="wZo-Z3-sW6" secondAttribute="centerX" id="Qnq-Az-0ze"/>
+                            <constraint firstItem="wFG-Np-b5y" firstAttribute="centerX" secondItem="wZo-Z3-sW6" secondAttribute="centerX" id="SJ8-PY-Vum"/>
+                            <constraint firstItem="wFG-Np-b5y" firstAttribute="top" secondItem="3ed-Ku-u1r" secondAttribute="bottom" constant="10" id="Y7O-tp-2Ki"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f72-FJ-1TE" userLabel="First Responder" sceneMemberID="firstResponder"/>
