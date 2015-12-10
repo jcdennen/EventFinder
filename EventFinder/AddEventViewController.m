@@ -19,11 +19,27 @@
     // Do any additional setup after loading the view.
     
     self.title = @"Add New Event";
+    self.eventTitleEntry.delegate = self;
+    self.eventDescriptionEntry.delegate = self;
+//    [self.eventDescriptionEntry setReturnKeyType:UIReturnKeyDone];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissTheKeyboard)];
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dismissTheKeyboard {
+    [self.eventDescriptionEntry resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if (textField == self.eventTitleEntry) {
+        [textField endEditing:YES];
+    }
+    return YES;
 }
 
 # warning constraints
