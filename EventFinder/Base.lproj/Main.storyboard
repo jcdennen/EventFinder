@@ -166,7 +166,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="b7M-pq-HTG">
+                                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="b7M-pq-HTG">
                                                 <rect key="frame" x="-4" y="220" width="568" height="100"/>
                                                 <animations/>
                                                 <constraints>
@@ -181,8 +181,11 @@
                                                 <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
                                                     <!--2037-12-31 11:00:00 +0000-->
                                                 </date>
+                                                <connections>
+                                                    <action selector="startDatePickerUpdated:" destination="7I0-ko-xR1" eventType="valueChanged" id="3kH-pJ-MeB"/>
+                                                </connections>
                                             </datePicker>
-                                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="3ed-Ku-u1r" userLabel="Time Picker">
+                                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="3ed-Ku-u1r" userLabel="Time Picker">
                                                 <rect key="frame" x="-4" y="348" width="568" height="100"/>
                                                 <animations/>
                                                 <constraints>
@@ -191,11 +194,23 @@
                                                 <date key="date" timeIntervalSinceReferenceDate="471390212.27916402">
                                                     <!--2015-12-09 21:43:32 +0000-->
                                                 </date>
+                                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                                                    <!--1970-01-01 11:00:00 +0000-->
+                                                </date>
+                                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
+                                                    <!--2037-12-31 11:00:00 +0000-->
+                                                </date>
+                                                <connections>
+                                                    <action selector="endDatePickerUpdated:" destination="7I0-ko-xR1" eventType="valueChanged" id="wjQ-BY-h6o"/>
+                                                </connections>
                                             </datePicker>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFG-Np-b5y">
                                                 <rect key="frame" x="256" y="489" width="49" height="30"/>
                                                 <animations/>
                                                 <state key="normal" title="Submit"/>
+                                                <connections>
+                                                    <action selector="submitNewEvent:" destination="7I0-ko-xR1" eventType="touchUpInside" id="yYH-qH-qxB"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrB-D4-ZDf" userLabel="Description">
                                                 <rect key="frame" x="8" y="83" width="93" height="21"/>
@@ -255,11 +270,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="datePicker" destination="b7M-pq-HTG" id="LKz-YK-fOO"/>
+                        <outlet property="endDatePicker" destination="3ed-Ku-u1r" id="lFc-wO-9Bn"/>
                         <outlet property="eventDescriptionEntry" destination="MeM-jD-r4a" id="yOc-Lp-hxC"/>
                         <outlet property="eventTitleEntry" destination="uTK-ct-MC4" id="i4Y-n9-QTN"/>
-                        <outlet property="submitNewEvent" destination="wFG-Np-b5y" id="HFj-jb-ymG"/>
-                        <outlet property="timePicker" destination="3ed-Ku-u1r" id="jSd-2L-k7I"/>
+                        <outlet property="startDatePicker" destination="b7M-pq-HTG" id="9DD-Jo-P32"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f72-FJ-1TE" userLabel="First Responder" sceneMemberID="firstResponder"/>

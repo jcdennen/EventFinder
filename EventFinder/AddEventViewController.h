@@ -7,19 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface AddEventViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *eventTitleEntry;
 @property (weak, nonatomic) IBOutlet UITextView *eventDescriptionEntry;
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property (weak, nonatomic) IBOutlet UIDatePicker *timePicker;
-@property (weak, nonatomic) IBOutlet UIButton *submitNewEvent;
+@property (weak, nonatomic) IBOutlet UIDatePicker *startDatePicker;
+@property (weak, nonatomic) IBOutlet UIDatePicker *endDatePicker;
+- (IBAction)submitNewEvent:(id)sender;
+- (IBAction)startDatePickerUpdated:(id)sender;
+- (IBAction)endDatePickerUpdated:(id)sender;
 
 @property (strong, nonatomic) NSString *eventTitle;
 @property (strong, nonatomic) NSString *eventDescription;
-//@property (strong, nonatomic) NSDate *eventDate;
-//@property (strong, nonatomic) NSDate *EventTime;
+@property (strong, nonatomic) NSDate *eventStartDate;
+@property (strong, nonatomic) NSDate *eventEndDate;
 //@property () eventLocation;
 
 @end
