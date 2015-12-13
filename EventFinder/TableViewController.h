@@ -13,5 +13,6 @@
 @interface TableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *eventObjects;
+@property (strong, nonatomic) PFGeoPoint *currentLocation;
 
 @end

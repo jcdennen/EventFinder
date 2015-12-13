@@ -30,17 +30,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-#warning TODO: update password action???
+//updates radiusLabel as appropriate slider moves
 - (IBAction)updateLocationRadius:(id)sender {
     _locationRadius = [NSNumber numberWithFloat:[(UISlider *)sender value]];
     _radiusLabel.text = [NSString stringWithFormat:@"%@mi", _locationRadius];
 }
 
+//updates daysLabel as appropriate slider moves
 - (IBAction)updateNumFutureDays:(id)sender {
     _numFutureDays = [NSNumber numberWithFloat:[(UISlider *)sender value]];
     _daysLabel.text = [NSString stringWithFormat:@"%@ days", _numFutureDays];
 }
 
+// updates user settings for location radius and number of future days (used in calendar/TableViewController)
 - (IBAction)saveUserSettings:(id)sender {
     // notify user of progress with loading animation
     UIActivityIndicatorView *loadingIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -72,6 +74,7 @@
     }];
 }
 
+//logs out Parse User and redirects to initial login view
 - (IBAction)logOutUser:(id)sender {
     [PFUser logOut];
     _currentUser = [PFUser currentUser];
@@ -83,13 +86,4 @@
     
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 @end

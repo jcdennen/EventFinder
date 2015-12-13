@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface AddEventViewController : UIViewController <UITextFieldDelegate>
+@interface AddEventViewController : UIViewController <UITextFieldDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *eventTitleEntry;
 @property (weak, nonatomic) IBOutlet UITextField *eventDescriptionEntry;

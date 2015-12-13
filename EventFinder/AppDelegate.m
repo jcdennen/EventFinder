@@ -23,9 +23,10 @@
         _manager = [[CLLocationManager alloc] init];
         _manager.distanceFilter = 100.0;
         _manager.desiredAccuracy = kCLLocationAccuracyBest;
-        _manager.delegate = (TableViewController *) self.window.rootViewController;
+        _manager.delegate = self;
         if ( [[[UIDevice currentDevice] systemVersion] doubleValue] >= 8.0 ) {
             [_manager requestAlwaysAuthorization];
+            NSLog(@"called");
         }
     }
     

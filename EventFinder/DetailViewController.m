@@ -26,8 +26,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    // Additional setup should not be necessary.. all setup done in prepareForSegue in TableViewController
+    
+    // all attributes are set here
     self.title = self.titleText;
+    _descriptionLabel.text = _eventDescription;
+    _startTimeLabel.text = [NSString stringWithFormat:@"Starts: %@", _startTime];
+    _endTimeLabel.text = [NSString stringWithFormat:@"Ends: %@", _endTime];
+    
+    // we use an MKpointAnnotation to locate the event's location in a MapView
+    MKPointAnnotation *eventAnnotation = [[MKPointAnnotation alloc] init];
+    [eventAnnotation setCoordinate:CLLocationCoordinate2DMake([_location latitude], [_location longitude])];
+    [eventAnnotation setTitle:self.titleText];
+    [_locationView addAnnotation:eventAnnotation];
+    
+    _hostLabel.text = [NSString stringWithFormat:@"Hosted by: %@", _host];
 
 }
 

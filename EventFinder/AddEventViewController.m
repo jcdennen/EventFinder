@@ -38,12 +38,6 @@
     [_endDatePicker setMinimumDate:_eventEndDate];
     [_endDatePicker setMaximumDate:[NSDate dateWithTimeInterval:31536000 sinceDate:_eventEndDate]];
     
-    //set the user's current position using a Parse GeoPoint method
-    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-        if (!error) {
-            _eventLocation = geoPoint;
-        }
-    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,32 +46,25 @@
 }
 
 - (void)dismissTheKeyboard {
-    _eventDescription = _eventDescriptionEntry.text;
     _eventTitle = _eventTitleEntry.text;
+    _eventDescription = _eventDescriptionEntry.text;
     [self.eventDescriptionEntry resignFirstResponder];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     if (textField == _eventTitleEntry) {
         _eventTitle = _eventTitleEntry.text;
+        _eventDescription = _eventDescriptionEntry.text;
         [textField endEditing:YES];
     }
     else if (textField == _eventDescriptionEntry) {
+        _eventTitle = _eventTitleEntry.text;
         _eventDescription = _eventDescriptionEntry.text;
         [textField endEditing:YES];
     }
     return YES;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)submitNewEvent:(id)sender {
     if ([_eventTitle isEqualToString:@""] || [_eventDescription isEqualToString:@""]) {
@@ -95,16 +82,8 @@
         eventObject[@"startTime"] = _eventStartDate;
         eventObject[@"endTime"] = _eventEndDate;
         eventObject[@"host"] = [[PFUser currentUser] username];
-        // set the user's current position again using a Parse GeoPoint method
-        __block PFGeoPoint *arblocation;
-        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-            if (!error) {
-                NSLog(@"geopoint: %@", geoPoint);
-                arblocation = geoPoint;
-            }
-        }];
-        NSLog(@"location: %@", arblocation);
-        eventObject[@"location"] = arblocation;
+        // set the user's current position again using a Parse GeoPoint
+        eventObject[@"location"] = _eventLocation;
         
         // save the object to Parse
         [eventObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

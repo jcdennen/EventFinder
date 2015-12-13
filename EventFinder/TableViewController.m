@@ -8,10 +8,10 @@
 
 #import "TableViewController.h"
 #import "DetailViewController.h"
-
+#import "AddEventViewController.h"
 
 @interface TableViewController ()
-@property (strong, nonatomic) NSMutableArray *eventTitles;
+
 @end
 
 @implementation TableViewController
@@ -19,23 +19,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.eventTitles = [[NSMutableArray alloc] initWithObjects:@"Event 1", @"Event 2", @"Event 3", @"Event 4", nil];
-    
-    __block PFGeoPoint *currentLocation;
-    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-        //
-        if (!error) {
-            currentLocation = geoPoint;
-        }
-        else {
-            NSLog(@"Error: %@", error);
-        }
-    }];
-        
+    // A Parse query that grabs all event objects based on their user settings (location radius and number of future days)
     PFQuery *query = [PFQuery queryWithClassName:@"EventObject"];
-    [query whereKey:@"location" nearGeoPoint:currentLocation withinMiles:[[PFUser currentUser][@"locationRadius"] doubleValue]];
+    [query whereKey:@"location" nearGeoPoint:_currentLocation withinMiles:[[PFUser currentUser][@"locationRadius"] doubleValue]];
+    [query whereKey:@"startTime" lessThanOrEqualTo:[NSDate dateWithTimeIntervalSinceNow:([[PFUser currentUser][@"numFutureDays"] integerValue] * 86400)]];
     _eventObjects = [[NSMutableArray alloc] initWithArray:[query findObjects]];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    //
+    _currentLocation = [PFGeoPoint geoPointWithLocation:[locations lastObject]];
+    NSLog(@"currentLocation: %@", _currentLocation);
     
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    //
+    switch ([error code]) {
+        case kCLErrorDenied:
+            NSLog(@"User denied location access");
+            break;
+        case kCLErrorLocationUnknown:
+            NSLog(@"Could not find location");
+            break;
+        case kCLErrorNetwork:
+            NSLog(@"Network Error");
+            break;
+        default:
+            NSLog(@"Unknwon location Error encountered");
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,7 +64,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.eventTitles count];
+    return [_eventObjects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -61,7 +75,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tableIdentifier];
     }
     
-    cell.textLabel.text = [self.eventTitles objectAtIndex:indexPath.row];
+    cell.textLabel.text = [_eventObjects objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -69,17 +83,35 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
     [super prepareForSegue:segue sender:sender];
     
+    //depending on which segue we're using, we setup the next VC's contents accordingly
     if ([segue.identifier isEqual: @"transitionToEvent"]) {
-    
+        
+        //before we display each event, we set up the contents here
+        
         DetailViewController *detailView = [segue destinationViewController];
         NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-        NSString *title = [self.eventTitles objectAtIndex:path.row];
+        PFObject *eventObject = [_eventObjects objectAtIndex:path.row];
+        NSString *title = eventObject[@"title"];
+        NSString *description = eventObject[@"description"];
+        NSDate *startTime = eventObject[@"startTime"];
+        NSDate *endTime = eventObject[@"endTime"];
+        NSString *host = eventObject[@"host" ];
+        PFGeoPoint *location = eventObject[@"location"];
         
         detailView.titleText = title;
+        detailView.eventDescription = description;
+        detailView.startTime = startTime;
+        detailView.endTime = endTime;
+        detailView.location = location;
+        detailView.host = host;
+    }
+    else if ([segue.identifier isEqual:@"transitionToAddEvent"]) {
+        // we simply pass location data to the AddEventViewController so we don't have to grab it there
+        AddEventViewController *addView = [segue destinationViewController];
+        addView.eventLocation = _currentLocation;
     }
 }
 
