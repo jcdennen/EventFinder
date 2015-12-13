@@ -28,26 +28,41 @@
     // Dispose of any resources that can be recreated.
 }
 
-#warning TODO: update slider values here
+#warning TODO: update password action???
 - (IBAction)updateLocationRadius:(id)sender {
-    NSLog(@"location sender: %@", sender);
-//    _locationRadius = sender;
+    _locationRadius = [NSNumber numberWithFloat:[(UISlider *)sender value]];
 }
 
 - (IBAction)updateNumFutureDays:(id)sender {
-//    _numFutureDays = sender;
+    _numFutureDays = [NSNumber numberWithFloat:[(UISlider *)sender value]];
 }
 
 - (IBAction)saveUserSettings:(id)sender {
+    // notify user of progress with loading animation
+    UIActivityIndicatorView *loadingIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [loadingIndicator startAnimating];
+    
     _currentUser[@"locationRadius"] = _locationRadius;
     _currentUser[@"numFutureDays"] = _numFutureDays;
+    
     [_currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        //
+        [loadingIndicator stopAnimating];
+        
         if (!error) {
             // alert success no redirect
+            UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Settings Updated" message:@"Success!" preferredStyle:UIAlertControllerStyleAlert];
+            [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [errorAlert dismissViewControllerAnimated:YES completion:nil];
+            }]];
+            [self presentViewController:errorAlert animated:YES completion:nil];
         }
         else {
             // alert error
+            UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Error Updating Settings" message:[error userInfo][@"error"] preferredStyle:UIAlertControllerStyleAlert];
+            [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [errorAlert dismissViewControllerAnimated:YES completion:nil];
+            }]];
+            [self presentViewController:errorAlert animated:YES completion:nil];
             NSLog(@"Error: %@", error);
         }
     }];
@@ -55,9 +70,8 @@
 
 - (IBAction)logOutUser:(id)sender {
     [PFUser logOut];
-#warning CHECK if necessary here...
     _currentUser = [PFUser currentUser];
-    // TODO: redirect to Log In ViewController
+    // redirect to LogInViewController
     dispatch_async(dispatch_get_main_queue(), ^{
         UIViewController *navViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogIn"];
         [self presentViewController:navViewController animated:YES completion:nil];

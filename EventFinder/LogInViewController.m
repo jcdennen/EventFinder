@@ -39,15 +39,29 @@
     NSString *password = _passwordField.text;
     
     if ([username length] < 5) {
-        // alert error
+        // alert user of error
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Invalid Login" message:@"Invalid username" preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [errorAlert dismissViewControllerAnimated:YES completion:nil];
+        }]];
+        [self presentViewController:errorAlert animated:YES completion:nil];
     }
     else if ([password length] < 8) {
-        // alert error
+        // alert user of error
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Invalid Login" message:@"Invalid password" preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [errorAlert dismissViewControllerAnimated:YES completion:nil];
+        }]];
+        [self presentViewController:errorAlert animated:YES completion:nil];
     }
     else {
-        //TODO: possible loading animation?
+        // notify user of progress with loading animation
+        UIActivityIndicatorView *loadingIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        [loadingIndicator startAnimating];
+        
         [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
-            //
+            [loadingIndicator stopAnimating];
+            
             if (user) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     UIViewController *navViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HomeCalendar"];
@@ -55,15 +69,19 @@
                 });
             }
             else {
-                //TODO: alert error
-                NSLog(@"Error: %@", error);
+                // alert user of error
+                UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Parse Error" message:[error userInfo][@"error"] preferredStyle:UIAlertControllerStyleAlert];
+                [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    [errorAlert dismissViewControllerAnimated:YES completion:nil];
+                }]];
+                [self presentViewController:errorAlert animated:YES completion:nil];
             }
         }];
     }
 }
 
 -(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
-    
+    //does nothing
 }
 
 @end

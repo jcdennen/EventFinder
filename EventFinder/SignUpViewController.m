@@ -41,29 +41,44 @@
     NSString *password = _passwordField.text;
 
     if ([email length] < 8) {
-        // alert error
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Invalid Email" message:@"Make sure you have a valid email and try again" preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [errorAlert dismissViewControllerAnimated:YES completion:nil];
+        }]];
+        [self presentViewController:errorAlert animated:YES completion:nil];
     }
     else if ([username length] < 5) {
-        // alert error
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Invalid Username" message:@"Username must be at least 5 characters long" preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [errorAlert dismissViewControllerAnimated:YES completion:nil];
+        }]];
+        [self presentViewController:errorAlert animated:YES completion:nil];
     }
     else if ([password length] < 8) {
-        // alert error
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Invalid Password" message:@"Password must be at least 8 characters long" preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [errorAlert dismissViewControllerAnimated:YES completion:nil];
+        }]];
+        [self presentViewController:errorAlert animated:YES completion:nil];
     }
     else {
-        // TODO: some sort of loading animation
+        // notify user of progress with loading animation
+        UIActivityIndicatorView *loadingIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        [loadingIndicator startAnimating];
         
         PFUser *user = [PFUser user];
         user.username = username;
         user.password = password;
         user.email = email;
         
-        // additional user settings
+        // setup additional default user settings
         user[@"locationRadius"] = [NSNumber numberWithInt:50];
         user[@"numFutureDays"] = [NSNumber numberWithInt:30];
         
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            [loadingIndicator stopAnimating];
+            
             if (!error) {
-                //TODO: success and redirect
                 dispatch_async(dispatch_get_main_queue(), ^{
                     UIViewController *navViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HomeCalendar"];
                     [self presentViewController:navViewController animated:YES completion:nil];
@@ -71,12 +86,13 @@
 
             }
             else {
-                // TODO: display error message
-                NSString *errorString = [error userInfo][@"error"];
-                NSLog(@"%@", errorString);
+                UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Parse Error" message:[error userInfo][@"error"] preferredStyle:UIAlertControllerStyleAlert];
+                [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    [errorAlert dismissViewControllerAnimated:YES completion:nil];
+                }]];
+                [self presentViewController:errorAlert animated:YES completion:nil];
             }
         }];
     }
-    
 }
 @end
