@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <Parse/Parse.h>
 
-@interface TableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
-//@property (strong, nonatomic) NSMutableArray *eventTitles;
+@interface TableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
+
+@property (strong, nonatomic) NSMutableArray *eventObjects;
+
 @end

@@ -21,6 +21,8 @@
     self.title = @"Settings";
     _currentUser = [PFUser currentUser];
     _usernameLabel.text = [_currentUser username];
+    _radiusLabel.text = _currentUser[@"locationRadius"];
+    _daysLabel.text = _currentUser[@"numFutureDays"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,10 +33,12 @@
 #warning TODO: update password action???
 - (IBAction)updateLocationRadius:(id)sender {
     _locationRadius = [NSNumber numberWithFloat:[(UISlider *)sender value]];
+    _radiusLabel.text = [NSString stringWithFormat:@"%@mi", _locationRadius];
 }
 
 - (IBAction)updateNumFutureDays:(id)sender {
     _numFutureDays = [NSNumber numberWithFloat:[(UISlider *)sender value]];
+    _daysLabel.text = [NSString stringWithFormat:@"%@ days", _numFutureDays];
 }
 
 - (IBAction)saveUserSettings:(id)sender {

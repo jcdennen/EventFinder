@@ -19,17 +19,31 @@
     // Do any additional setup after loading the view.
     
     self.title = @"Add New Event";
-    self.eventTitleEntry.delegate = self;
-    self.eventDescriptionEntry.delegate = self;
-
+    _eventTitleEntry.delegate = self;
+    _eventDescriptionEntry.delegate = self;
+    
+    // allow user to dismiss keyboard by tapping anywhere in the view
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissTheKeyboard)];
     [self.view addGestureRecognizer:tap];
     
-    //initialize to empty strings
+    // initialize to arbitrary data
     _eventTitle = @"";
     _eventDescription = @"";
-    _eventStartDate = @"";
-    _eventEndDate = @"";
+    _eventStartDate = [NSDate date];
+    _eventEndDate = [NSDate date];
+    
+    // set mins for DatePickers as current date an maxs as a year from current date
+    [_startDatePicker setMinimumDate:_eventStartDate];
+    [_startDatePicker setMaximumDate:[NSDate dateWithTimeInterval:31536000 sinceDate:_eventStartDate]];
+    [_endDatePicker setMinimumDate:_eventEndDate];
+    [_endDatePicker setMaximumDate:[NSDate dateWithTimeInterval:31536000 sinceDate:_eventEndDate]];
+    
+    //set the user's current position using a Parse GeoPoint method
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+        if (!error) {
+            _eventLocation = geoPoint;
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,16 +58,16 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    if (textField == self.eventTitleEntry) {
+    if (textField == _eventTitleEntry) {
         _eventTitle = _eventTitleEntry.text;
+        [textField endEditing:YES];
+    }
+    else if (textField == _eventDescriptionEntry) {
+        _eventDescription = _eventDescriptionEntry.text;
         [textField endEditing:YES];
     }
     return YES;
 }
-
-# warning TODO: set constraints for UIDatePicker
-    // need to have the event date/time minimum constrained to the current time
-
 
 /*
 #pragma mark - Navigation
@@ -67,40 +81,62 @@
 
 - (IBAction)submitNewEvent:(id)sender {
     if ([_eventTitle isEqualToString:@""] || [_eventDescription isEqualToString:@""]) {
-        //alert the user by pop up to @"Make Sure All Fields Are Filled Correctly and Try Again"
-        NSLog(@"Make Sure All Fields Are Filled Correctly and Try Again");
+        // alert user of error
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Event Error" message:@"Make Sure All Fields Are Filled Correctly and Try Again" preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [errorAlert dismissViewControllerAnimated:YES completion:nil];
+        }]];
+        [self presentViewController:errorAlert animated:YES completion:nil];
     }
-//    else if ([_eventStartDate isEqualToString:@""] || [_eventEndDate isEqualToString:@""]) {
-//        NSLog(@"Please Enter Valid Start and End Dates and Times");
-//    }
     else {
         PFObject *eventObject = [PFObject objectWithClassName:@"EventObject"];
         eventObject[@"title"] = _eventTitle;
         eventObject[@"description"] = _eventDescription;
         eventObject[@"startTime"] = _eventStartDate;
         eventObject[@"endTime"] = _eventEndDate;
-#warning TODO: set these values
-        // use PFGeoPoint
-        eventObject[@"location"] = @"";
-        // get the current PFUser
         eventObject[@"host"] = [[PFUser currentUser] username];
+        // set the user's current position again using a Parse GeoPoint method
+        __block PFGeoPoint *arblocation;
+        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+            if (!error) {
+                NSLog(@"geopoint: %@", geoPoint);
+                arblocation = geoPoint;
+            }
+        }];
+        NSLog(@"location: %@", arblocation);
+        eventObject[@"location"] = arblocation;
         
         // save the object to Parse
         [eventObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
-                //
-                NSLog(@"Success!");
+                // alert user of success then redirect to list of events
+                UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Success!" message:@"Your event was created!" preferredStyle:UIAlertControllerStyleAlert];
+                [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    [errorAlert dismissViewControllerAnimated:YES completion:nil];
+                }]];
+                [self presentViewController:errorAlert animated:YES completion:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIViewController *navViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HomeCalendar"];
+                    [self presentViewController:navViewController animated:YES completion:nil];
+                });
             }
             else {
-                // alert user that there's an error
-                NSLog(@"Error: %@", error.description);
+                // alert user of error
+                UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Parse Error" message:[error description] preferredStyle:UIAlertControllerStyleAlert];
+                [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    [errorAlert dismissViewControllerAnimated:YES completion:nil];
+                }]];
+                [self presentViewController:errorAlert animated:YES completion:nil];
             }
         }];
     }
 }
 
 - (IBAction)startDatePickerUpdated:(id)sender {
+    // set the event's start date as well as update the min & max for the end date
     _eventStartDate = _startDatePicker.date;
+    [_endDatePicker setMinimumDate:_eventStartDate];
+    [_endDatePicker setMaximumDate:[NSDate dateWithTimeInterval:31536000 sinceDate:_eventStartDate]];
 }
 
 - (IBAction)endDatePickerUpdated:(id)sender {

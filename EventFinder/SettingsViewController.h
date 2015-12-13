@@ -15,6 +15,8 @@
 @property (strong, nonatomic) NSNumber *numFutureDays;
 
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *radiusLabel;
+@property (weak, nonatomic) IBOutlet UILabel *daysLabel;
 
 - (IBAction)updateLocationRadius:(id)sender;
 - (IBAction)updateNumFutureDays:(id)sender;

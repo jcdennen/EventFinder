@@ -17,39 +17,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lGD-jm-5CD">
-                                <rect key="frame" x="200" y="138" width="200" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRE-UJ-XUO">
+                                <rect key="frame" x="261" y="96" width="79" height="21"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rYl-b6-lOS">
-                                <rect key="frame" x="200" y="176" width="200" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="0.0" maxValue="90" translatesAutoresizingMaskIntoConstraints="NO" id="tU8-mH-csj" userLabel="Dates Slider">
-                                <rect key="frame" x="148" y="429" width="304" height="31"/>
+                                <rect key="frame" x="148" y="295" width="304" height="31"/>
                                 <animations/>
                                 <connections>
                                     <action selector="updateNumFutureDays:" destination="rDN-6j-M93" eventType="valueChanged" id="Kxm-aM-pEX"/>
                                 </connections>
                             </slider>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Location Radius" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jip-dz-wfW">
-                                <rect key="frame" x="247" y="288" width="107" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Location Radius:" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jip-dz-wfW">
+                                <rect key="frame" x="247" y="154" width="107" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Number of Days in View" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GG6-xD-tjI">
-                                <rect key="frame" x="221" y="391" width="159" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Number of Days in View:" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GG6-xD-tjI">
+                                <rect key="frame" x="221" y="257" width="159" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efW-wE-LzO">
-                                <rect key="frame" x="278" y="493" width="46" height="30"/>
+                                <rect key="frame" x="277" y="359" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Save"/>
                                 <connections>
@@ -57,7 +52,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnm-vN-guO">
-                                <rect key="frame" x="273" y="550" width="55" height="30"/>
+                                <rect key="frame" x="273" y="416" width="55" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Log Out">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,36 +61,45 @@
                                     <action selector="logOutUser:" destination="rDN-6j-M93" eventType="touchUpInside" id="lWy-AM-Lx1"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRE-UJ-XUO">
-                                <rect key="frame" x="261" y="96" width="79" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="oOm-m7-VOo" userLabel="Location Slider">
-                                <rect key="frame" x="148" y="326" width="304" height="31"/>
+                                <rect key="frame" x="148" y="192" width="304" height="31"/>
                                 <animations/>
                                 <connections>
                                     <action selector="updateLocationRadius:" destination="rDN-6j-M93" eventType="valueChanged" id="5V4-Rn-1WX"/>
                                 </connections>
                             </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="50mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bn-H3-9XZ">
+                                <rect key="frame" x="365" y="158" width="39" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="30 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbf-nV-gdo">
+                                <rect key="frame" x="388" y="261" width="61" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lGD-jm-5CD" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="7au-EB-bJz"/>
-                            <constraint firstItem="rYl-b6-lOS" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="EsK-Ak-arH"/>
+                            <constraint firstItem="Nbf-nV-gdo" firstAttribute="leading" secondItem="GG6-xD-tjI" secondAttribute="trailing" constant="8" id="GLk-mf-8e2"/>
                             <constraint firstItem="oOm-m7-VOo" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="Jzk-qZ-qLi"/>
                             <constraint firstItem="tU8-mH-csj" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="LHq-eO-qmF"/>
                             <constraint firstItem="efW-wE-LzO" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="R6n-DZ-bXJ"/>
                             <constraint firstItem="aRE-UJ-XUO" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="UoW-FT-T2k"/>
+                            <constraint firstItem="2bn-H3-9XZ" firstAttribute="leading" secondItem="jip-dz-wfW" secondAttribute="trailing" constant="8" id="WZO-qL-toY"/>
                             <constraint firstItem="jip-dz-wfW" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="bY9-0Y-ic9"/>
                             <constraint firstItem="GG6-xD-tjI" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="pvE-SI-nMG"/>
                             <constraint firstItem="pnm-vN-guO" firstAttribute="centerX" secondItem="3Y3-yh-l8a" secondAttribute="centerX" id="uSQ-BA-khf"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="daysLabel" destination="Nbf-nV-gdo" id="UhS-Eb-jUf"/>
+                        <outlet property="radiusLabel" destination="2bn-H3-9XZ" id="Vbz-Xy-0Q8"/>
                         <outlet property="usernameLabel" destination="aRE-UJ-XUO" id="Ssu-sJ-os3"/>
                     </connections>
                 </viewController>
@@ -168,42 +172,20 @@
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="536"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0g-BU-qoC" userLabel="Title">
-                                                <rect key="frame" x="8" y="16" width="38" height="21"/>
+                                                <rect key="frame" x="261" y="17" width="38" height="21"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter A Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uTK-ct-MC4">
-                                                <rect key="frame" x="8" y="54" width="544" height="21"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Enter A Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MeM-jD-r4a" userLabel="Enter A Description">
-                                                <rect key="frame" x="8" y="112" width="544" height="100"/>
-                                                <animations/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="lWA-GQ-9qb"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
                                             <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="b7M-pq-HTG">
-                                                <rect key="frame" x="-4" y="220" width="568" height="100"/>
+                                                <rect key="frame" x="-8" y="198" width="568" height="100"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="5Lo-kX-Bl2"/>
                                                 </constraints>
                                                 <date key="date" timeIntervalSinceReferenceDate="471389860.16694999">
                                                     <!--2015-12-09 21:37:40 +0000-->
-                                                </date>
-                                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
-                                                    <!--1970-01-01 11:00:00 +0000-->
-                                                </date>
-                                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
-                                                    <!--2037-12-31 11:00:00 +0000-->
                                                 </date>
                                                 <connections>
                                                     <action selector="startDatePickerUpdated:" destination="7I0-ko-xR1" eventType="valueChanged" id="3kH-pJ-MeB"/>
@@ -218,12 +200,6 @@
                                                 <date key="date" timeIntervalSinceReferenceDate="471390212.27916402">
                                                     <!--2015-12-09 21:43:32 +0000-->
                                                 </date>
-                                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
-                                                    <!--1970-01-01 11:00:00 +0000-->
-                                                </date>
-                                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
-                                                    <!--2037-12-31 11:00:00 +0000-->
-                                                </date>
                                                 <connections>
                                                     <action selector="endDatePickerUpdated:" destination="7I0-ko-xR1" eventType="valueChanged" id="wjQ-BY-h6o"/>
                                                 </connections>
@@ -236,40 +212,69 @@
                                                     <action selector="submitNewEvent:" destination="7I0-ko-xR1" eventType="touchUpInside" id="yYH-qH-qxB"/>
                                                 </connections>
                                             </button>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter an Event Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uTK-ct-MC4">
+                                                <rect key="frame" x="8" y="54" width="544" height="30"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrB-D4-ZDf" userLabel="Description">
-                                                <rect key="frame" x="8" y="83" width="93" height="21"/>
+                                                <rect key="frame" x="234" y="92" width="93" height="21"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Start Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBy-2x-IFU">
+                                                <rect key="frame" x="239" y="169" width="83" height="21"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="End Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9V-AZ-OsU">
+                                                <rect key="frame" x="247" y="311" width="75" height="21"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter an Event Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LoH-nh-Np3">
+                                                <rect key="frame" x="8" y="121" width="544" height="30"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="HrB-D4-ZDf" firstAttribute="leading" secondItem="8ze-H2-Y2G" secondAttribute="leading" id="1cP-GH-qma"/>
+                                            <constraint firstItem="LoH-nh-Np3" firstAttribute="top" secondItem="HrB-D4-ZDf" secondAttribute="bottom" constant="8" id="1Uo-b7-rdk"/>
                                             <constraint firstAttribute="bottom" secondItem="wFG-Np-b5y" secondAttribute="bottom" constant="20" id="1hT-88-nSr"/>
                                             <constraint firstItem="d0g-BU-qoC" firstAttribute="top" secondItem="8ze-H2-Y2G" secondAttribute="top" constant="10" id="3Ej-qA-KeZ"/>
                                             <constraint firstItem="b7M-pq-HTG" firstAttribute="centerX" secondItem="8ze-H2-Y2G" secondAttribute="centerX" id="46O-Om-kTg"/>
                                             <constraint firstItem="uTK-ct-MC4" firstAttribute="leading" secondItem="8ze-H2-Y2G" secondAttribute="leading" id="6kJ-mc-fs0"/>
                                             <constraint firstItem="3ed-Ku-u1r" firstAttribute="leading" secondItem="8ze-H2-Y2G" secondAttribute="leading" id="ABi-aJ-zGw"/>
+                                            <constraint firstItem="G9V-AZ-OsU" firstAttribute="top" secondItem="b7M-pq-HTG" secondAttribute="bottom" constant="10" id="BSL-nY-VUb"/>
+                                            <constraint firstItem="3ed-Ku-u1r" firstAttribute="top" secondItem="G9V-AZ-OsU" secondAttribute="bottom" constant="8" id="CiT-NA-X0k"/>
                                             <constraint firstItem="wFG-Np-b5y" firstAttribute="centerX" secondItem="8ze-H2-Y2G" secondAttribute="centerX" id="Dfl-rF-4tZ"/>
-                                            <constraint firstAttribute="trailing" secondItem="MeM-jD-r4a" secondAttribute="trailing" id="FH3-5V-Q8U"/>
-                                            <constraint firstItem="MeM-jD-r4a" firstAttribute="leading" secondItem="8ze-H2-Y2G" secondAttribute="leading" id="G7s-2n-UI6"/>
                                             <constraint firstAttribute="trailing" secondItem="uTK-ct-MC4" secondAttribute="trailing" id="GHN-wM-vL4"/>
                                             <constraint firstItem="b7M-pq-HTG" firstAttribute="leading" secondItem="8ze-H2-Y2G" secondAttribute="leading" id="Gv9-aR-aUJ"/>
                                             <constraint firstItem="HrB-D4-ZDf" firstAttribute="top" secondItem="uTK-ct-MC4" secondAttribute="bottom" constant="10" id="HPr-PA-zdN"/>
                                             <constraint firstAttribute="trailing" secondItem="b7M-pq-HTG" secondAttribute="trailing" id="O5A-NU-Lfy"/>
-                                            <constraint firstItem="MeM-jD-r4a" firstAttribute="centerX" secondItem="8ze-H2-Y2G" secondAttribute="centerX" id="Svv-kL-cbE"/>
+                                            <constraint firstItem="LoH-nh-Np3" firstAttribute="leading" secondItem="8ze-H2-Y2G" secondAttribute="leading" id="Rpn-gR-nK0"/>
+                                            <constraint firstItem="dBy-2x-IFU" firstAttribute="top" secondItem="LoH-nh-Np3" secondAttribute="bottom" constant="20" id="SIc-C8-Dxa"/>
+                                            <constraint firstItem="d0g-BU-qoC" firstAttribute="centerX" secondItem="8ze-H2-Y2G" secondAttribute="centerX" id="Yz0-v7-x8Z"/>
+                                            <constraint firstItem="G9V-AZ-OsU" firstAttribute="centerX" secondItem="8ze-H2-Y2G" secondAttribute="centerX" id="Zp9-Cb-Li8"/>
                                             <constraint firstAttribute="trailing" secondItem="3ed-Ku-u1r" secondAttribute="trailing" id="ZwX-QV-lm4"/>
                                             <constraint firstItem="uTK-ct-MC4" firstAttribute="top" secondItem="d0g-BU-qoC" secondAttribute="bottom" constant="8" id="b2l-lA-aDo"/>
-                                            <constraint firstItem="wFG-Np-b5y" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3ed-Ku-u1r" secondAttribute="bottom" constant="15" id="bIX-o2-y9a"/>
-                                            <constraint firstItem="3ed-Ku-u1r" firstAttribute="top" secondItem="b7M-pq-HTG" secondAttribute="bottom" constant="10" id="fgc-uY-sq3"/>
-                                            <constraint firstItem="MeM-jD-r4a" firstAttribute="top" secondItem="HrB-D4-ZDf" secondAttribute="bottom" constant="8" id="i7J-mi-1Kd"/>
+                                            <constraint firstItem="HrB-D4-ZDf" firstAttribute="centerX" secondItem="8ze-H2-Y2G" secondAttribute="centerX" id="cc3-56-bxp"/>
+                                            <constraint firstItem="dBy-2x-IFU" firstAttribute="centerX" secondItem="8ze-H2-Y2G" secondAttribute="centerX" id="j2t-SG-u1g"/>
                                             <constraint firstItem="3ed-Ku-u1r" firstAttribute="centerX" secondItem="8ze-H2-Y2G" secondAttribute="centerX" id="qiM-AW-Nea"/>
-                                            <constraint firstItem="d0g-BU-qoC" firstAttribute="leading" secondItem="8ze-H2-Y2G" secondAttribute="leading" id="ugC-hf-lpz"/>
+                                            <constraint firstItem="b7M-pq-HTG" firstAttribute="top" secondItem="dBy-2x-IFU" secondAttribute="bottom" constant="8" id="sXt-2J-3Ea"/>
+                                            <constraint firstItem="LoH-nh-Np3" firstAttribute="centerX" secondItem="8ze-H2-Y2G" secondAttribute="centerX" id="tut-qM-lOL"/>
+                                            <constraint firstAttribute="trailing" secondItem="LoH-nh-Np3" secondAttribute="trailing" id="v9z-yP-YRi"/>
                                             <constraint firstItem="uTK-ct-MC4" firstAttribute="centerX" secondItem="8ze-H2-Y2G" secondAttribute="centerX" id="ymE-OS-z5U"/>
-                                            <constraint firstItem="b7M-pq-HTG" firstAttribute="top" secondItem="MeM-jD-r4a" secondAttribute="bottom" constant="10" id="yrV-Ks-3sc"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -295,7 +300,7 @@
                     </view>
                     <connections>
                         <outlet property="endDatePicker" destination="3ed-Ku-u1r" id="lFc-wO-9Bn"/>
-                        <outlet property="eventDescriptionEntry" destination="MeM-jD-r4a" id="yOc-Lp-hxC"/>
+                        <outlet property="eventDescriptionEntry" destination="LoH-nh-Np3" id="zFU-lr-ukp"/>
                         <outlet property="eventTitleEntry" destination="uTK-ct-MC4" id="i4Y-n9-QTN"/>
                         <outlet property="startDatePicker" destination="b7M-pq-HTG" id="9DD-Jo-P32"/>
                     </connections>
