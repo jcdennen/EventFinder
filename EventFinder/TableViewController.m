@@ -17,34 +17,32 @@
 @implementation TableViewController
 
 
-//NOTE: TABLEVIEWCONTROLLER CURRENTLY DOES NOT POPULATE WITH LIST OF EVENTS - ISSUE WITH PULLING DATA FROM PARSE
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    __block PFGeoPoint *location;
+    
     // parse method for grabbing the current location of the user
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         if (!error) {
+            
             _currentLocation = geoPoint;
-            location = geoPoint;
-            NSLog(@"GeoPoint: %@", geoPoint);
+            
             // A Parse query that grabs all event objects based on their user settings (location radius and number of future days)
             PFQuery *query = [PFQuery queryWithClassName:@"EventObject"];
-            [query whereKey:@"location" nearGeoPoint:location withinMiles:[[PFUser currentUser][@"locationRadius"] doubleValue]];
+            [query whereKey:@"location" nearGeoPoint:_currentLocation withinMiles:[[PFUser currentUser][@"locationRadius"] doubleValue]];
             [query whereKey:@"startTime" lessThanOrEqualTo:[NSDate dateWithTimeIntervalSinceNow:([[PFUser currentUser][@"numFutureDays"] integerValue] * 86400)]];
             _eventObjects = [[NSMutableArray alloc] initWithArray:[query findObjects]];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
         }
         else {
+            // log error if any
             NSLog(@"Error: %@", error);
         }
     }];
-    NSLog(@"currentLocation: %@", _currentLocation);
-    
-    // A Parse query that grabs all event objects based on their user settings (location radius and number of future days)
-    PFQuery *query = [PFQuery queryWithClassName:@"EventObject"];
-    [query whereKey:@"location" nearGeoPoint:location withinMiles:[[PFUser currentUser][@"locationRadius"] doubleValue]];
-    [query whereKey:@"startTime" lessThanOrEqualTo:[NSDate dateWithTimeIntervalSinceNow:([[PFUser currentUser][@"numFutureDays"] integerValue] * 86400)]];
-    _eventObjects = [[NSMutableArray alloc] initWithArray:[query findObjects]];
+
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
@@ -100,7 +98,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tableIdentifier];
     }
     
-    cell.textLabel.text = [_eventObjects objectAtIndex:indexPath.row];
+    cell.textLabel.text = [_eventObjects objectAtIndex:indexPath.row][@"title"];
     return cell;
 }
 
