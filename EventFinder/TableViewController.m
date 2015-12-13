@@ -16,26 +16,51 @@
 
 @implementation TableViewController
 
+
+//NOTE: TABLEVIEWCONTROLLER CURRENTLY DOES NOT POPULATE WITH LIST OF EVENTS - ISSUE WITH PULLING DATA FROM PARSE
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    __block PFGeoPoint *location;
+    // parse method for grabbing the current location of the user
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+        if (!error) {
+            _currentLocation = geoPoint;
+            location = geoPoint;
+            NSLog(@"GeoPoint: %@", geoPoint);
+            // A Parse query that grabs all event objects based on their user settings (location radius and number of future days)
+            PFQuery *query = [PFQuery queryWithClassName:@"EventObject"];
+            [query whereKey:@"location" nearGeoPoint:location withinMiles:[[PFUser currentUser][@"locationRadius"] doubleValue]];
+            [query whereKey:@"startTime" lessThanOrEqualTo:[NSDate dateWithTimeIntervalSinceNow:([[PFUser currentUser][@"numFutureDays"] integerValue] * 86400)]];
+            _eventObjects = [[NSMutableArray alloc] initWithArray:[query findObjects]];
+        }
+        else {
+            NSLog(@"Error: %@", error);
+        }
+    }];
+    NSLog(@"currentLocation: %@", _currentLocation);
+    
+    // A Parse query that grabs all event objects based on their user settings (location radius and number of future days)
+    PFQuery *query = [PFQuery queryWithClassName:@"EventObject"];
+    [query whereKey:@"location" nearGeoPoint:location withinMiles:[[PFUser currentUser][@"locationRadius"] doubleValue]];
+    [query whereKey:@"startTime" lessThanOrEqualTo:[NSDate dateWithTimeIntervalSinceNow:([[PFUser currentUser][@"numFutureDays"] integerValue] * 86400)]];
+    _eventObjects = [[NSMutableArray alloc] initWithArray:[query findObjects]];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    // updates currentLocation
+    _currentLocation = [PFGeoPoint geoPointWithLocation:[locations lastObject]];
     
     // A Parse query that grabs all event objects based on their user settings (location radius and number of future days)
     PFQuery *query = [PFQuery queryWithClassName:@"EventObject"];
     [query whereKey:@"location" nearGeoPoint:_currentLocation withinMiles:[[PFUser currentUser][@"locationRadius"] doubleValue]];
     [query whereKey:@"startTime" lessThanOrEqualTo:[NSDate dateWithTimeIntervalSinceNow:([[PFUser currentUser][@"numFutureDays"] integerValue] * 86400)]];
     _eventObjects = [[NSMutableArray alloc] initWithArray:[query findObjects]];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    //
-    _currentLocation = [PFGeoPoint geoPointWithLocation:[locations lastObject]];
-    NSLog(@"currentLocation: %@", _currentLocation);
-    
     
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    //
+    // throw errors accordingly
     switch ([error code]) {
         case kCLErrorDenied:
             NSLog(@"User denied location access");

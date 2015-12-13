@@ -26,7 +26,6 @@
         _manager.delegate = self;
         if ( [[[UIDevice currentDevice] systemVersion] doubleValue] >= 8.0 ) {
             [_manager requestAlwaysAuthorization];
-            NSLog(@"called");
         }
     }
     
