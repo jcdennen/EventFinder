@@ -15,6 +15,8 @@
 		3F0ED0621BD7126F00A7448C /* EventFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ED0611BD7126F00A7448C /* EventFinderTests.m */; };
 		3F0ED06D1BD7126F00A7448C /* EventFinderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ED06C1BD7126F00A7448C /* EventFinderUITests.m */; };
 		3F53E3701BF00B99000C6AA8 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F53E36F1BF00B99000C6AA8 /* DetailViewController.m */; };
+		E54ADF3C1C1CADC1001CF06F /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54ADF3B1C1CADC1001CF06F /* LogInViewController.m */; };
+		E54ADF3F1C1CADE2001CF06F /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54ADF3E1C1CADE2001CF06F /* SignUpViewController.m */; };
 		E58106681C17CBDD008612F4 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58106661C17CBDD008612F4 /* Bolts.framework */; };
 		E58106691C17CBDD008612F4 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58106671C17CBDD008612F4 /* Parse.framework */; };
 		E58106741C17CCCC008612F4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E581066A1C17CCCC008612F4 /* AudioToolbox.framework */; };
@@ -66,6 +68,10 @@
 		3F0ED06E1BD7126F00A7448C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F53E36E1BF00B99000C6AA8 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		3F53E36F1BF00B99000C6AA8 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		E54ADF3A1C1CADC1001CF06F /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
+		E54ADF3B1C1CADC1001CF06F /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		E54ADF3D1C1CADE2001CF06F /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		E54ADF3E1C1CADE2001CF06F /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		E58106661C17CBDD008612F4 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		E58106671C17CBDD008612F4 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E581066A1C17CCCC008612F4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -155,8 +161,12 @@
 				E581067F1C17F29D008612F4 /* AddEventViewController.m */,
 				3F53E36E1BF00B99000C6AA8 /* DetailViewController.h */,
 				3F53E36F1BF00B99000C6AA8 /* DetailViewController.m */,
+				E54ADF3A1C1CADC1001CF06F /* LogInViewController.h */,
+				E54ADF3B1C1CADC1001CF06F /* LogInViewController.m */,
 				E58106811C17F2E1008612F4 /* SettingsViewController.h */,
 				E58106821C17F2E1008612F4 /* SettingsViewController.m */,
+				E54ADF3D1C1CADE2001CF06F /* SignUpViewController.h */,
+				E54ADF3E1C1CADE2001CF06F /* SignUpViewController.m */,
 				E5BA7C9A1BFAF05F002AC574 /* TableViewController.h */,
 				E5BA7C9B1BFAF076002AC574 /* TableViewController.m */,
 				3F0ED0501BD7126E00A7448C /* Main.storyboard */,
@@ -342,11 +352,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E54ADF3C1C1CADC1001CF06F /* LogInViewController.m in Sources */,
 				3F53E3701BF00B99000C6AA8 /* DetailViewController.m in Sources */,
 				E5BA7C9C1BFAF076002AC574 /* TableViewController.m in Sources */,
 				3F0ED04C1BD7126E00A7448C /* AppDelegate.m in Sources */,
 				3F0ED0491BD7126E00A7448C /* main.m in Sources */,
 				E58106801C17F29D008612F4 /* AddEventViewController.m in Sources */,
+				E54ADF3F1C1CADE2001CF06F /* SignUpViewController.m in Sources */,
 				E58106831C17F2E1008612F4 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

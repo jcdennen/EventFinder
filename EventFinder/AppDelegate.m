@@ -18,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Power app with Local Datastore
-    // [Parse enableLocalDatastore];
+     [Parse enableLocalDatastore];
     
     // Initialize Parse
     [Parse setApplicationId:@"0dYzQuR501xsrN6tIQPHFYHXHIrgODxxxeWsk5iw" clientKey:@"ZILiLNGeHvG2iS5WTPC6e13hlzhVUccRZdQ0ByGH"];

@@ -83,7 +83,7 @@
         // use PFGeoPoint
         eventObject[@"location"] = @"";
         // get the current PFUser
-        eventObject[@"host"] = @"";
+        eventObject[@"host"] = [[PFUser currentUser] username];
         
         // save the object to Parse
         [eventObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
