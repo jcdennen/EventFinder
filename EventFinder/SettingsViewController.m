@@ -21,8 +21,10 @@
     self.title = @"Settings";
     _currentUser = [PFUser currentUser];
     _usernameLabel.text = [_currentUser username];
-    _radiusLabel.text = _currentUser[@"locationRadius"];
-    _daysLabel.text = _currentUser[@"numFutureDays"];
+    _locationRadius = _currentUser[@"locationRadius"];
+    _radiusLabel.text = [NSString stringWithFormat:@"%ldmi", (long)[_locationRadius integerValue]];
+     _numFutureDays = _currentUser[@"numFutureDays"];
+    _daysLabel.text = [NSString stringWithFormat:@"%ld days", (long)[_numFutureDays integerValue]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,13 +35,13 @@
 //updates radiusLabel as appropriate slider moves
 - (IBAction)updateLocationRadius:(id)sender {
     _locationRadius = [NSNumber numberWithFloat:[(UISlider *)sender value]];
-    _radiusLabel.text = [NSString stringWithFormat:@"%@mi", _locationRadius];
+    _radiusLabel.text = [NSString stringWithFormat:@"%ldmi", (long)[_locationRadius integerValue]];
 }
 
 //updates daysLabel as appropriate slider moves
 - (IBAction)updateNumFutureDays:(id)sender {
     _numFutureDays = [NSNumber numberWithFloat:[(UISlider *)sender value]];
-    _daysLabel.text = [NSString stringWithFormat:@"%@ days", _numFutureDays];
+    _daysLabel.text = [NSString stringWithFormat:@"%ld days", (long)[_numFutureDays integerValue]];
 }
 
 // updates user settings for location radius and number of future days (used in calendar/TableViewController)
